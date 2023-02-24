@@ -1,5 +1,4 @@
-<<<<<<< HEAD
-# practice-demo
+# practice-demo: 实习初期的训练项目
 
 ## Project setup
 ```
@@ -16,14 +15,10 @@ npm run serve
 npm run build
 ```
 
-### Lints and fixes files
+### 启动express与Mock.js
 ```
-npm run lint
+npm run mock
 ```
 
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
-=======
-# practiceDemo
-A practice Demo
->>>>>>> 6c949ebd2c5fd37db695c8439f17e357d3b90049
