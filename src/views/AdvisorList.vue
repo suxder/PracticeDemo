@@ -34,7 +34,15 @@
               {{ item.name }}
             </h2>
 
-            <span>{{ item.favState ? "已收藏" : "未收藏" }}</span>
+            <span
+              class="collectBtn"
+              v-bind:style="{
+                backgroundImage:
+                  'url(' +
+                  require('../assets/imgs/' + colletState(item.favState)) +
+                  ')',
+              }"
+            ></span>
           </router-link>
           <p>
             {{ item.introSim }}
@@ -105,15 +113,20 @@ export default {
     },
     pullFavStateData() {
       const favStateData = JSON.parse(localStorage.getItem("advisorFavState"));
-      console.log(favStateData);
       this.data.forEach((item, idx) => {
         item.favState = favStateData[idx].favState;
       });
-      console.log(this.data);
+      this.$store.commit(
+        "initStorage",
+        JSON.parse(localStorage.getItem("advisorFavState"))
+      );
     },
     initStorage() {
       console.log("将Vuex中的数据上传到local");
       this.$store.commit("initLocalStorage");
+    },
+    colletState(favState) {
+      return favState ? "redHeart.png" : "heart.png";
     },
   },
 };

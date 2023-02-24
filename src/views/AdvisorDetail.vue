@@ -28,8 +28,13 @@
           <h3>{{ itemAdvisorMsg.name }}</h3>
           <p>Intuitive Advisor</p>
           <span
-            ><button @click="changeAdvisorFavState()">收藏顾问</button></span
-          >
+            @click="changeAdvisorFavState()"
+            class="collectBtn"
+            v-bind:style="{
+              backgroundImage:
+                'url(' + require('../assets/imgs/' + advisorItemFavURL) + ')',
+            }"
+          ></span>
         </div>
         <div class="advisorDetailPrice">
           <ul>
@@ -91,6 +96,7 @@ export default {
   data() {
     return {
       advisorItemFavState: false,
+      advisorItemFavURL: "heart.png",
       advisorItemID: 0,
       itemAdvisorMsg: {
         avatarUrl: "/avatar03.webp",
@@ -98,12 +104,12 @@ export default {
       },
     };
   },
-  beforeMount() {
-    this.initData();
-  },
   mounted() {
-    this.advisorItemFavState =
-      this.$store.state.advisorFavState[this.advisorItemID];
+    this.initData();
+    this.advisorItemFavState = JSON.parse(
+      localStorage.getItem("advisorFavState")
+    )[this.advisorItemID].favState;
+    this.favURlByState;
   },
   methods: {
     initData() {
@@ -113,10 +119,22 @@ export default {
     async getItemByID() {
       const { data: res } = await getAdvisorListAPI();
       this.itemAdvisorMsg = res.data.advisorList[this.advisorItemID];
+
+      this.favURlByState();
     },
     changeAdvisorFavState() {
-      this.advisorItemFavState = !this.advisorItemFavState;
       this.$store.commit("changeData", this.advisorItemID);
+      this.favURlByState();
+    },
+    favURlByState() {
+      this.advisorItemFavState = JSON.parse(
+        localStorage.getItem("advisorFavState")
+      )[this.advisorItemID].favState;
+      if (this.advisorItemFavState === false) {
+        this.advisorItemFavURL = "heart.png";
+      } else {
+        this.advisorItemFavURL = "redHeart.png";
+      }
     },
   },
 };
@@ -166,6 +184,15 @@ export default {
   font-family: "poppins-Medium";
   font-size: 1rem;
   color: #291149;
+}
+
+.collectBtn {
+  display: block;
+  width: 40px;
+  height: 36px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 
 .advisorDetailPrice {
