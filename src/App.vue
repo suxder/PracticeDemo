@@ -39,9 +39,9 @@
         <a-popover>
           <template slot="content">
             <div class="hoverBox">
-              <p><router-link>My Account</router-link></p>
-              <p><router-link>My Order</router-link></p>
-              <p><router-link>Sign out</router-link></p>
+              <p><router-link to="/account">My Account</router-link></p>
+              <p><router-link to="/orders">My Order</router-link></p>
+              <p><router-link to="/">Sign out</router-link></p>
             </div>
           </template>
           <div class="profiles">
@@ -315,6 +315,12 @@ header {
 
 .hoverBox {
   width: 10rem;
+}
+
+.hoverBox a {
+  font-family: "poppins-Medium";
+  font-size: 1rem;
+  color: #291149;
 }
 
 .content {
