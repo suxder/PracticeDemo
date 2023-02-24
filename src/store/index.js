@@ -54,8 +54,6 @@ export default new Vuex.Store({
         "advisorFavState",
         JSON.stringify(state.advisorFavState)
       );
-
-      console.log(state.advisorFavState);
     },
     getDataStorage() {
       return JSON.parse(localStorage.getItem("advisorFavState"));

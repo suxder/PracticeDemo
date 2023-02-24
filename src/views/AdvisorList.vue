@@ -121,10 +121,6 @@ export default {
         JSON.parse(localStorage.getItem("advisorFavState"))
       );
     },
-    initStorage() {
-      console.log("将Vuex中的数据上传到local");
-      this.$store.commit("initLocalStorage");
-    },
     colletState(favState) {
       return favState ? "redHeart.png" : "heart.png";
     },
