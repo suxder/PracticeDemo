@@ -80,7 +80,10 @@ export default {
   },
   methods: {
     onShowSizeChange(current, pageSize) {
-      this.showData = this.data.slice(current - 1, current + pageSize - 1);
+      this.showData = this.data.slice(
+        (current - 1) * pageSize,
+        (current - 1) * pageSize + pageSize
+      );
     },
     async getList() {
       const { data: res } = await getAdvisorListAPI();
