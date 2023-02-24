@@ -2,6 +2,10 @@ import Vue from "vue";
 import App from "./App.vue";
 import router from "./router";
 import store from "./store";
+import ant from "../config/AntDesign"; // 拆分antd引入模块为单独文件
+import "./assets/fonts/font.css";
+
+Vue.use(ant);
 
 Vue.config.productionTip = false;
 
