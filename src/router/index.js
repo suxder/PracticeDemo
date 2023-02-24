@@ -26,6 +26,15 @@ const routes = [
 
 const router = new VueRouter({
   routes,
+  // eslint-disable-next-line no-unused-vars
+  scrollBehavior(to, from, savedPosition) {
+    /* 注意这里的写法！ */
+    return {
+      x: 0,
+      y: 0,
+      behavior: "smooth",
+    };
+  },
 });
 
 export default router;
