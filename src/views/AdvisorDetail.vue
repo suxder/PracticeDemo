@@ -1,6 +1,19 @@
 <template>
   <div class="advisorDetail">
     <div class="advisorDetailContainer">
+      <!-- 面包屑 -->
+      <div class="breadcrumbContainer">
+        <a-breadcrumb separator=">" class="breadcrumb">
+          <a-breadcrumb-item
+            ><router-link to="/" class="breadcrumbLink">
+              Home
+            </router-link></a-breadcrumb-item
+          >
+          <a-breadcrumb-item class="breadcrumbLink">
+            {{ itemAdvisorMsg.name }}</a-breadcrumb-item
+          >
+        </a-breadcrumb>
+      </div>
       <div class="advisorMsg">
         <div
           class="advisorAvatar"
@@ -121,10 +134,15 @@ export default {
   flex-direction: column;
 }
 
+.breadcrumbContainer {
+  width: 1200px;
+  margin: 0 auto;
+}
+
 .advisorMsg {
   margin: 0 auto;
   width: 1200px;
-  height: 30vh;
+  height: 20vh;
   display: flex;
   justify-content: center;
   align-items: center;

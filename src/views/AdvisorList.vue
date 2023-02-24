@@ -3,6 +3,17 @@
   <div class="advisorList">
     <div class="navBarBgi"></div>
     <div class="advisorContainer">
+      <!-- 面包屑 -->
+      <a-breadcrumb separator=">">
+        <a-breadcrumb-item
+          ><router-link to="/" class="breadcrumbLink">
+            Home
+          </router-link></a-breadcrumb-item
+        >
+        <a-breadcrumb-item class="breadcrumbLink">
+          {{ this.$router.currentRoute.name }}</a-breadcrumb-item
+        >
+      </a-breadcrumb>
       <div class="advisorItem" v-for="item in showData" :key="item.id">
         <div class="avatar">
           <div
@@ -128,6 +139,12 @@ export default {
   margin: 0 auto;
 }
 
+/* 面包屑样式 */
+.breadcrumbLink {
+  font-family: "poppins-Bold";
+  font-size: 1.125rem;
+}
+
 .advisorItem {
   display: flex;
   justify-content: center;
@@ -230,5 +247,6 @@ button.chatBtn {
 .pagination {
   padding: 6rem;
   padding-top: 4rem;
+  text-align: center;
 }
 </style>
