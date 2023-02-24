@@ -6,7 +6,7 @@
 
 <style>
 .homeView {
-  min-height: 60vh;
+  min-height: 58vh;
   display: flex;
   justify-content: center;
   align-items: center;

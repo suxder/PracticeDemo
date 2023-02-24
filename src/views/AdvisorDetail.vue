@@ -143,7 +143,7 @@ export default {
 <style>
 .advisorDetail {
   width: 100%;
-  min-height: 60vh;
+  min-height: 58vh;
 }
 
 .advisorDetailContainer {

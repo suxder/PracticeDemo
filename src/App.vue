@@ -36,7 +36,7 @@
           </ul>
         </div>
 
-        <a-popover>
+        <a-popover placement="bottom">
           <template slot="content">
             <div class="hoverBox">
               <p><router-link to="/account">My Account</router-link></p>
