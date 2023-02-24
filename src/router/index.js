@@ -3,6 +3,8 @@ import VueRouter from "vue-router";
 import AdvisorList from "../views/AdvisorList.vue";
 import HomeVue from "@/views/HomeVue.vue";
 import AdvisorDetail from "@/views/AdvisorDetail.vue";
+import AccountVue from "@/views/AccountVue.vue";
+import OrderVue from "@/views/OrderVue.vue";
 
 Vue.use(VueRouter);
 
@@ -21,6 +23,16 @@ const routes = [
     path: "/advisorDetail",
     name: "advisorsDetail",
     component: AdvisorDetail,
+  },
+  {
+    path: "/account",
+    name: "accountInfo",
+    component: AccountVue,
+  },
+  {
+    path: "/orders",
+    name: "orders",
+    component: OrderVue,
   },
 ];
 

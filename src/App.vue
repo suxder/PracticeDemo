@@ -35,25 +35,35 @@
             </li>
           </ul>
         </div>
-        <div class="profiles">
-          <div class="avatar">
-            <div class="avatarPic"></div>
-          </div>
-          <div class="avatarMsg">
-            <div class="avatarName">UserName</div>
-            <div class="avatarAssets">
-              <div class="avatarAssetsNum">0$</div>
-              <div class="avatarAssetsAdd">
-                <i class="iconfont icon-add"></i>
+
+        <a-popover>
+          <template slot="content">
+            <div class="hoverBox">
+              <p><router-link>My Account</router-link></p>
+              <p><router-link>My Order</router-link></p>
+              <p><router-link>Sign out</router-link></p>
+            </div>
+          </template>
+          <div class="profiles">
+            <div class="avatar">
+              <div class="avatarPic"></div>
+            </div>
+            <div class="avatarMsg">
+              <div class="avatarName">UserName</div>
+              <div class="avatarAssets">
+                <div class="avatarAssetsNum">0$</div>
+                <div class="avatarAssetsAdd">
+                  <i class="iconfont icon-add"></i>
+                </div>
               </div>
             </div>
+            <div class="avatarChat">
+              <a href="#">
+                <div class="avatarChatPic"></div>
+              </a>
+            </div>
           </div>
-          <div class="avatarChat">
-            <a href="#">
-              <div class="avatarChatPic"></div>
-            </a>
-          </div>
-        </div>
+        </a-popover>
       </div>
     </header>
     <div class="content">
@@ -115,9 +125,16 @@
             </li>
           </ul>
         </li>
-        <li></li>
-        <li></li>
+        <li class="webInformation">
+          2023 Best Psychic, Inc © All rights reserved
+        </li>
       </ul>
+      <div class="footColorBar">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
     </footer>
   </div>
 </template>
@@ -166,6 +183,7 @@ header {
   right: 0;
   width: 100%;
   height: 10vh;
+  border-bottom: 1px solid #e6e6e6;
 }
 
 .container {
@@ -293,6 +311,10 @@ header {
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
+}
+
+.hoverBox {
+  width: 10rem;
 }
 
 .content {
@@ -430,5 +452,21 @@ footer > ul > li:last-child {
 
 .appLogo span:nth-child(4) {
   background-image: url("./assets/imgs/home_fb.png");
+}
+
+.webInformation {
+  font-family: "poppins-Medium";
+  font-size: 0.875rem;
+  padding-left: 2rem;
+}
+
+.footColorBar {
+  display: flex;
+  height: 2vh;
+  width: 100%;
+  background-image: url("./assets/imgs/horizontalBar@3x.94e4d8a.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center;
 }
 </style>

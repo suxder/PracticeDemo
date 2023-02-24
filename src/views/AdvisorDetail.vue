@@ -155,6 +155,7 @@ export default {
 .breadcrumbContainer {
   width: 1200px;
   margin: 0 auto;
+  padding-top: 2rem;
 }
 
 .advisorMsg {

@@ -1,4 +1,11 @@
-import { List, Avatar, Pagination, Divider, Breadcrumb } from "ant-design-vue";
+import {
+  List,
+  Avatar,
+  Pagination,
+  Divider,
+  Breadcrumb,
+  Popover,
+} from "ant-design-vue";
 
 const ant = {
   install: function (Vue) {
@@ -7,6 +14,7 @@ const ant = {
     Vue.use(Pagination);
     Vue.use(Divider);
     Vue.use(Breadcrumb);
+    Vue.use(Popover);
   },
 };
 export default ant;
