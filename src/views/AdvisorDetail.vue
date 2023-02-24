@@ -44,6 +44,7 @@
       <div class="advisorAbout">
         <div class="advisorAboutContainer">
           <h3>About</h3>
+          <p><span class="quotaMark"></span></p>
           <p>
             Lorem ipsum dolor sit amet consectetur adipisicing elit. Eos
             aspernatur facere nisi sunt esse, quidem laborum architecto
@@ -160,6 +161,17 @@ export default {
   height: 50vh;
   background-color: #fcf8ff;
   padding: 2rem 0;
+}
+
+.quotaMark {
+  display: block;
+  width: 2.5rem;
+  height: 2.5rem;
+  margin: 1.5625rem 0px 0.6875rem;
+  background-image: url("../assets/imgs/quotationMarks.svg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 .advisorDetailPrice li {
