@@ -3,11 +3,16 @@
   <div class="advisorList">
     <div class="navBarBgi"></div>
     <div class="advisorContainer">
-      <div class="advisorItem" v-for="item in showData" :key="item.name">
+      <div class="advisorItem" v-for="item in showData" :key="item.id">
         <div class="avatar">
           <div
             class="avatarImg"
-            v-bind:style="{ backgroundImage: item.avatarUrl }"
+            v-bind:style="{
+              backgroundImage:
+                'url(' +
+                require('../assets/imgs/avatars' + item.avatarUrl) +
+                ')',
+            }"
           ></div>
         </div>
         <div class="advisorItemMsg">
@@ -139,7 +144,6 @@ export default {
   flex: 1;
   height: 160px;
   width: 160px;
-  background-image: url("../assets/imgs/avatars/avatar01.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;

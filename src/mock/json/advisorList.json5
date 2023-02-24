@@ -5,56 +5,56 @@
         {
           id: 0,
           name: "Spiritual Master",
-          avatarUrl: "../assets/imgs/avatars/avatar01.webp",
+          avatarUrl: "/avatar01.webp",
           introSim: "Intuitive Advisor ",
           intro: "I am an inspirational intuitive life healer, one that changes lives and empowering individuals to broaden their spiritual awareness and facilitate clients on a transformational journey to success. ‘Intuitive’ is defined as having a very profound knowing without a conscious reasoning. I guide individuals who can’t seem to find what is missing and they don’t understand what is happening yet and are looking to advance to the next phase of their lives; relationships, career, advancement, self-discovery. My reading style consists of dealing with the four states of being: mental, emotional, physical and spiritual."
         },
         {
           id: 1,
           name: "Anna",
-          avatarUrl: "../assets/imgs/avatars/avatar02.webp",
+          avatarUrl: "/avatar02.webp",
                     introSim: "Intuitive Advisor ",
           intro: "I am an inspirational intuitive life healer, one that changes lives and empowering individuals to broaden their spiritual awareness and facilitate clients on a transformational journey to success. ‘Intuitive’ is defined as having a very profound knowing without a conscious reasoning. I guide individuals who can’t seem to find what is missing and they don’t understand what is happening yet and are looking to advance to the next phase of their lives; relationships, career, advancement, self-discovery. My reading style consists of dealing with the four states of being: mental, emotional, physical and spiritual."
         },
         {
           id: 2,
           name: "Lii",
-          avatarUrl: "../assets/imgs/avatars/avatar03.webp",
+          avatarUrl: "/avatar03.webp",
                     introSim: "Intuitive Advisor ",
           intro: "I am an inspirational intuitive life healer, one that changes lives and empowering individuals to broaden their spiritual awareness and facilitate clients on a transformational journey to success. ‘Intuitive’ is defined as having a very profound knowing without a conscious reasoning. I guide individuals who can’t seem to find what is missing and they don’t understand what is happening yet and are looking to advance to the next phase of their lives; relationships, career, advancement, self-discovery. My reading style consists of dealing with the four states of being: mental, emotional, physical and spiritual."
         },
         {
           id: 3,
           name: "Red",
-          avatarUrl: "../assets/imgs/avatars/avatar04.webp",
+          avatarUrl: "/avatar04.webp",
                     introSim: "Intuitive Advisor ",
           intro: "I am an inspirational intuitive life healer, one that changes lives and empowering individuals to broaden their spiritual awareness and facilitate clients on a transformational journey to success. ‘Intuitive’ is defined as having a very profound knowing without a conscious reasoning. I guide individuals who can’t seem to find what is missing and they don’t understand what is happening yet and are looking to advance to the next phase of their lives; relationships, career, advancement, self-discovery. My reading style consists of dealing with the four states of being: mental, emotional, physical and spiritual."
         },
         {
           id:4,
           name: "Lisa",
-          avatarUrl: "../assets/imgs/avatars/avatar01.webp",
+          avatarUrl: "/avatar05.jpg",
                     introSim: "Intuitive Advisor ",
           intro: "I am an inspirational intuitive life healer, one that changes lives and empowering individuals to broaden their spiritual awareness and facilitate clients on a transformational journey to success. ‘Intuitive’ is defined as having a very profound knowing without a conscious reasoning. I guide individuals who can’t seem to find what is missing and they don’t understand what is happening yet and are looking to advance to the next phase of their lives; relationships, career, advancement, self-discovery. My reading style consists of dealing with the four states of being: mental, emotional, physical and spiritual."
         },
         {
           id:5,
           name: "Anna",
-          avatarUrl: "../assets/imgs/avatars/avatar02.webp",
+          avatarUrl: "/avatar06.webp",
                     introSim: "Intuitive Advisor ",
           intro: "I am an inspirational intuitive life healer, one that changes lives and empowering individuals to broaden their spiritual awareness and facilitate clients on a transformational journey to success. ‘Intuitive’ is defined as having a very profound knowing without a conscious reasoning. I guide individuals who can’t seem to find what is missing and they don’t understand what is happening yet and are looking to advance to the next phase of their lives; relationships, career, advancement, self-discovery. My reading style consists of dealing with the four states of being: mental, emotional, physical and spiritual."
         },
         {
           id:6,
           name: "Lii",
-          avatarUrl: "../assets/imgs/avatars/avatar03.webp",
+          avatarUrl: "/avatar07.webp",
                     introSim: "Intuitive Advisor ",
           intro: "I am an inspirational intuitive life healer, one that changes lives and empowering individuals to broaden their spiritual awareness and facilitate clients on a transformational journey to success. ‘Intuitive’ is defined as having a very profound knowing without a conscious reasoning. I guide individuals who can’t seem to find what is missing and they don’t understand what is happening yet and are looking to advance to the next phase of their lives; relationships, career, advancement, self-discovery. My reading style consists of dealing with the four states of being: mental, emotional, physical and spiritual."
         },
         {
           id:7,
           name: "Red",
-          avatarUrl: "../assets/imgs/avatars/avatar04.webp",
+          avatarUrl: "/avatar08.webp",
                     introSim: "Intuitive Advisor ",
           intro: "I am an inspirational intuitive life healer, one that changes lives and empowering individuals to broaden their spiritual awareness and facilitate clients on a transformational journey to success. ‘Intuitive’ is defined as having a very profound knowing without a conscious reasoning. I guide individuals who can’t seem to find what is missing and they don’t understand what is happening yet and are looking to advance to the next phase of their lives; relationships, career, advancement, self-discovery. My reading style consists of dealing with the four states of being: mental, emotional, physical and spiritual."
         },
