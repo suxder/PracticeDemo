@@ -79,7 +79,7 @@ export default {
       advisorItemFavState: false,
       advisorItemID: 0,
       itemAdvisorMsg: {
-        avatarUrl: "/avatar02.webp",
+        avatarUrl: "/avatar03.webp",
         name: null,
       },
     };
