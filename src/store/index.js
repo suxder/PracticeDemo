@@ -42,12 +42,24 @@ export default new Vuex.Store({
   },
   getters: {},
   mutations: {
-    initData(state, data) {
-      console.log("初始化数据");
-      state.advisorFavState = data;
+    initLocalStorage(state) {
+      /* 
+        localStorage只能存放字符串
+      */
+      localStorage.setItem(
+        "advisorFavState",
+        JSON.stringify(state.advisorFavState)
+      );
     },
     changeData(state, id) {
       state.advisorFavState[id].favState = !state.advisorFavState[id].favState;
+      localStorage.setItem(
+        "advisorFavState",
+        JSON.stringify(state.advisorFavState)
+      );
+    },
+    getDataStorage() {
+      return JSON.parse(localStorage.getItem("advisorFavState"));
     },
   },
   actions: {},

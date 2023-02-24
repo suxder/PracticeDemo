@@ -76,7 +76,6 @@ export default {
   mounted() {
     this.getList();
     this.onShowSizeChange(1, this.pageSize);
-    this.pullFavStateData();
   },
   methods: {
     onShowSizeChange(current, pageSize) {
@@ -88,29 +87,22 @@ export default {
     async getList() {
       const { data: res } = await getAdvisorListAPI();
       this.data = res.data.advisorList;
-      console.log(this.data);
+
       this.pullFavStateData();
+
       this.onShowSizeChange(1, this.pageSize);
     },
-    initFavData() {
-      let favData = [];
-      this.data.forEach((item) => {
-        const itemFavState = {
-          id: item.id,
-          favState: false,
-        };
-
-        favData.push(itemFavState);
-      });
-
-      this.$store.commit("initData", favData);
-    },
     pullFavStateData() {
-      const favStateData = this.$store.state.advisorFavState;
+      const favStateData = JSON.parse(localStorage.getItem("advisorFavState"));
+      console.log(favStateData);
       this.data.forEach((item, idx) => {
         item.favState = favStateData[idx].favState;
       });
       console.log(this.data);
+    },
+    initStorage() {
+      console.log("将Vuex中的数据上传到local");
+      this.$store.commit("initLocalStorage");
     },
   },
 };

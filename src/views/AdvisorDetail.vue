@@ -2,9 +2,17 @@
   <div class="advisorDetail">
     <div class="advisorDetailContainer">
       <div class="advisorMsg">
-        <div class="advisorAvatar"></div>
+        <div
+          class="advisorAvatar"
+          v-bind:style="{
+            backgroundImage:
+              'url(' +
+              require('../assets/imgs/avatars' + itemAdvisorMsg.avatarUrl) +
+              ')',
+          }"
+        ></div>
         <div class="advisorMsgSim">
-          <h3>Lisa</h3>
+          <h3>{{ itemAdvisorMsg.name }}</h3>
           <p>Intuitive Advisor</p>
           <span
             ><button @click="changeAdvisorFavState()">收藏顾问</button></span
@@ -63,22 +71,34 @@
 </template>
 
 <script>
+import { getAdvisorListAPI } from "@/api/advisorList.js";
+
 export default {
   data() {
     return {
       advisorItemFavState: false,
       advisorItemID: 0,
+      itemAdvisorMsg: {
+        avatarUrl: "/avatar01.webp",
+        name: null,
+      },
     };
   },
-  mounted() {
+  beforeMount() {
     this.initData();
-    console.log(this.$store.state);
+  },
+  mounted() {
     this.advisorItemFavState =
       this.$store.state.advisorFavState[this.advisorItemID];
   },
   methods: {
     initData() {
       this.advisorItemID = this.$route.query.id;
+      this.getItemByID();
+    },
+    async getItemByID() {
+      const { data: res } = await getAdvisorListAPI();
+      this.itemAdvisorMsg = res.data.advisorList[this.advisorItemID];
     },
     changeAdvisorFavState() {
       this.advisorItemFavState = !this.advisorItemFavState;
@@ -195,7 +215,6 @@ export default {
 .advisorAvatar {
   height: 160px;
   width: 160px;
-  background-image: url("../assets/imgs/avatars/avatar03.webp");
   background-size: cover;
   background-position: center;
   background-repeat: no-repeat;
