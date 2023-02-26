@@ -8,6 +8,9 @@ import {
   FormModel,
   Input,
   DatePicker,
+  Radio,
+  Select,
+  Button,
 } from "ant-design-vue";
 
 const ant = {
@@ -21,6 +24,9 @@ const ant = {
     Vue.use(FormModel);
     Vue.use(Input);
     Vue.use(DatePicker);
+    Vue.use(Radio);
+    Vue.use(Select);
+    Vue.use(Button);
   },
 };
 export default ant;

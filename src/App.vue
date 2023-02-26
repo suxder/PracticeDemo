@@ -335,7 +335,7 @@ header {
 footer {
   background-color: #f1e7ff;
   width: 100%;
-  height: 30%;
+  min-height: 30%;
 }
 
 footer > ul {

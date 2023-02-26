@@ -39,13 +39,6 @@ export default new Vuex.Store({
         favState: false,
       },
     ],
-    accountInfo: {
-      name: "285768778",
-      BirthDay: "2005-02-24",
-      Gender: 2,
-      email: "1439433131@qq.com",
-      PhoneNumber: "+86 153770921076",
-    },
   },
   getters: {},
   mutations: {
