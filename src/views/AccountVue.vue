@@ -191,6 +191,7 @@ export default {
     },
     onSubmit() {
       localStorage.setItem("userInfo", JSON.stringify(this.userInfoFormData));
+      this.$message.success("信息修改成功！");
     },
     pullData() {
       const cacheData = JSON.parse(localStorage.getItem("userInfo"));

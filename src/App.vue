@@ -129,12 +129,7 @@
           2023 Best Psychic, Inc © All rights reserved
         </li>
       </ul>
-      <div class="footColorBar">
-        <div></div>
-        <div></div>
-        <div></div>
-        <div></div>
-      </div>
+      <div class="footColorBar"></div>
     </footer>
   </div>
 </template>
@@ -170,8 +165,13 @@ body {
 #app {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  min-height: 100%;
   height: 100%;
   width: 100%;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
 }
 
 header {
@@ -184,6 +184,7 @@ header {
   width: 100%;
   height: 10vh;
   border-bottom: 1px solid #e6e6e6;
+  flex: 0 0 auto;
 }
 
 .container {
@@ -324,6 +325,7 @@ header {
 }
 
 .content {
+  flex: 1 0 auto;
   width: 100%;
   padding-top: 10vh;
   display: flex;
@@ -335,14 +337,15 @@ header {
 footer {
   background-color: #f1e7ff;
   width: 100%;
-  min-height: 30%;
+  max-height: 30%;
+  flex: 0 0 auto;
 }
 
 footer > ul {
   display: flex;
   flex-direction: column;
   padding: 0;
-  height: 100%;
+  max-height: 100%;
   width: 1200px;
   margin: 0 auto;
 }

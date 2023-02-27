@@ -11,6 +11,7 @@ import {
   Radio,
   Select,
   Button,
+  Message,
 } from "ant-design-vue";
 
 const ant = {
@@ -27,6 +28,8 @@ const ant = {
     Vue.use(Radio);
     Vue.use(Select);
     Vue.use(Button);
+    Vue.use(Message);
+    Vue.prototype.$message = Message;
   },
 };
 export default ant;
