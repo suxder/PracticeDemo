@@ -5,6 +5,7 @@ import HomeVue from "@/views/HomeVue.vue";
 import AdvisorDetail from "@/views/AdvisorDetail.vue";
 import AccountVue from "@/views/AccountVue.vue";
 import OrderVue from "@/views/OrderVue.vue";
+import PlaceOrders from "@/views/PlaceOrders.vue";
 
 Vue.use(VueRouter);
 
@@ -33,6 +34,11 @@ const routes = [
     path: "/orders",
     name: "orders",
     component: OrderVue,
+  },
+  {
+    path: "/placeOrders",
+    name: "placeOrders",
+    component: PlaceOrders,
   },
 ];
 

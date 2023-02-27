@@ -39,7 +39,13 @@
         <div class="advisorDetailPrice">
           <ul>
             <li>
-              <p>Text Reading</p>
+              <router-link
+                v-bind:to="{
+                  path: '/placeOrders',
+                  query: { id: this.advisorItemID },
+                }"
+                ><p>Text Reading</p></router-link
+              >
               <i>Delivered within 24h</i>
             </li>
             <li>

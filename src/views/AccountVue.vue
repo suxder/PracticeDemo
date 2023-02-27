@@ -34,10 +34,10 @@
           :wrapper-col="{ span: 16 }"
         >
           <a-date-picker
-            :default-value="moment(userInfoFormData.BirthDay, dateFormat)"
             type="date"
             v-model="userInfoFormData.BirthDay"
             style="width: 50%"
+            :format="this.dateFormat"
           />
         </a-form-model-item>
 
@@ -224,6 +224,11 @@ export default {
   width: 100%;
   min-height: 40vh;
   padding: 2rem 0;
+}
+
+.ant-form-item-label > label {
+  color: #4d1398 !important;
+  font-family: "poppins-Bold";
 }
 
 .ant-radio-group label {

@@ -39,6 +39,7 @@ export default new Vuex.Store({
         favState: false,
       },
     ],
+    orderList: [],
   },
   getters: {},
   mutations: {
@@ -57,6 +58,20 @@ export default new Vuex.Store({
     },
     getDataStorage() {
       return JSON.parse(localStorage.getItem("advisorFavState"));
+    },
+    /* 添加订单至订单列表 */
+    addOrdersItem(state, orderItemData) {
+      state.orderList.push(orderItemData);
+      localStorage.setItem("orderList", JSON.stringify(state.orderList));
+    },
+    /* 页面刷新时，拉取localStorage中的数据到Vuex中，进行数据同步 */
+    dataSyc(state) {
+      const cacheOrderList = JSON.parse(localStorage.getItem("orderList"));
+      if (cacheOrderList === null) {
+        state.orderList = [];
+      } else {
+        state.orderList = cacheOrderList;
+      }
     },
   },
   actions: {},

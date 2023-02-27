@@ -12,6 +12,9 @@ import {
   Select,
   Button,
   Message,
+  Upload,
+  Icon,
+  Rate,
 } from "ant-design-vue";
 
 const ant = {
@@ -30,6 +33,9 @@ const ant = {
     Vue.use(Button);
     Vue.use(Message);
     Vue.prototype.$message = Message;
+    Vue.use(Upload);
+    Vue.use(Icon);
+    Vue.use(Rate);
   },
 };
 export default ant;
