@@ -196,6 +196,7 @@ export default {
       /* 清空表单中的数据 */
       this.orderItem.GeneralSituation = "";
       this.orderItem.SpecificQuestion = "";
+      this.fileList = [];
     },
 
     handleChange(info) {
