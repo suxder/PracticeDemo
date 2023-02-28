@@ -15,30 +15,35 @@
     <!-- 订单列表 -->
     <div class="orderListContainer">
       <div v-for="item in showData" :key="item.id">
-        <div class="orderItem">
-          <div
-            class="advisorAvatar smallAvatar"
-            v-bind:style="{
-              backgroundImage:
-                'url(' +
-                require('../assets/imgs/avatars' + item.advisorAvatar) +
-                ')',
-            }"
-          ></div>
-          <div class="order">
-            <h3>{{ item.advisorName }}</h3>
-            <p>{{ item.SpecificQuestion }}</p>
-            <p>
-              <i
-                v-bind:style="{
-                  color: getStatusColor(item.orderStatus),
-                }"
-                >{{ getStatusText(item.orderStatus) }} </i
-              >| Text Reading
-            </p>
+        <router-link
+          v-bind:to="{ path: '/orderDetails', query: { id: item.orderID } }"
+        >
+          <div class="orderItem">
+            <div
+              class="advisorAvatar smallAvatar"
+              v-bind:style="{
+                backgroundImage:
+                  'url(' +
+                  require('../assets/imgs/avatars' + item.advisorAvatar) +
+                  ')',
+              }"
+            ></div>
+            <div class="order">
+              <h3>{{ item.advisorName }}</h3>
+              <p>{{ item.SpecificQuestion }}</p>
+              <p>
+                <i
+                  v-bind:style="{
+                    color: getStatusColor(item.orderStatus),
+                  }"
+                  >{{ getStatusText(item.orderStatus) }} </i
+                >| Text Reading
+              </p>
+            </div>
+            <div class="orderTime">{{ item.orderTime }}</div>
           </div>
-          <div class="orderTime">{{ item.orderTime }}</div>
-        </div>
+        </router-link>
+
         <a-divider></a-divider>
       </div>
     </div>
