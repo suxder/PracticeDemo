@@ -31,9 +31,9 @@
             <p>
               <i
                 v-bind:style="{
-                  color: getStatusColor(item.status),
+                  color: getStatusColor(item.orderStatus),
                 }"
-                >{{ getStatusText(item.status) }} </i
+                >{{ getStatusText(item.orderStatus) }} </i
               >| Text Reading
             </p>
           </div>
@@ -61,7 +61,6 @@ export default {
       showData: [],
       pageSize: 5,
       current: 1,
-      orderStatus: [1, 2, 3, 4],
     };
   },
   mounted() {
@@ -78,11 +77,6 @@ export default {
     initOrderList() {
       this.ordersList = JSON.parse(localStorage.getItem("orderList"));
       this.onShowSizeChange(1, this.pageSize);
-    },
-    initOrderStatus() {
-      this.ordersList.forEach((item, idx) => {
-        item.status = this.orderStatus[idx];
-      });
     },
     getStatusColor(itemStatus) {
       if (itemStatus === 1) {

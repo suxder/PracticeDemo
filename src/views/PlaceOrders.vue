@@ -150,7 +150,7 @@ export default {
   data() {
     this.dateFormat = "YYYY-MM-DD";
     return {
-      advisorItemID: 0,
+      advisorItemID: null,
       itemAdvisorMsg: {
         avatarUrl: "/avatar03.webp",
         name: null,
@@ -159,13 +159,8 @@ export default {
       fileList: [],
       // 订单信息
       orderItem: {
-        advisorName: "",
         GeneralSituation: "",
         SpecificQuestion: "",
-        orderTime: "",
-        advisorID: 0,
-        advisorAvatar: "",
-        orderType: "Text Reading",
       },
     };
   },
@@ -187,11 +182,20 @@ export default {
       this.userInfoFormData = JSON.parse(localStorage.getItem("userInfo"));
     },
     onSubmit() {
-      this.orderItem.advisorName = this.itemAdvisorMsg.name;
-      this.orderItem.orderTime = new Date().toLocaleString();
-      this.orderItem.advisorAvatar = this.itemAdvisorMsg.avatarUrl;
-      this.orderItem.advisorID = this.advisorItemID;
-      this.$store.commit("addOrdersItem", this.orderItem);
+      /* 组织一个对象，减少代码冗余 */
+      const orderOBJ = {
+        orderID: this.createOrderNum(),
+        advisorName: this.itemAdvisorMsg.name,
+        GeneralSituation: this.orderItem.GeneralSituation,
+        SpecificQuestion: this.orderItem.SpecificQuestion,
+        orderTime: new Date().toLocaleString(),
+        advisorID: this.advisorItemID,
+        advisorAvatar: this.itemAdvisorMsg.avatarUrl,
+        orderType: "Text Reading",
+        /* Mock 一条数据 */
+        orderStatus: this.getRandom(1, 4),
+      };
+      this.$store.commit("addOrdersItem", orderOBJ);
       this.$message.success("订单提交成功！");
       /* 清空表单中的数据 */
       this.orderItem.GeneralSituation = "";
@@ -228,6 +232,39 @@ export default {
         this.$message.error("Image must smaller than 2MB!");
       }
       return isJpgOrPng && isLt2M;
+    },
+    /* 根据时间生成随机订单ID */
+    setTimeDateFmt(s) {
+      // 个位数补齐十位数
+      return s < 10 ? "0" + s : s;
+    },
+    createOrderNum() {
+      const now = new Date();
+      let month = now.getMonth() + 1;
+      let day = now.getDate();
+      let hour = now.getHours();
+      let minutes = now.getMinutes();
+      let seconds = now.getSeconds();
+      month = this.setTimeDateFmt(month);
+      day = this.setTimeDateFmt(day);
+      hour = this.setTimeDateFmt(hour);
+      minutes = this.setTimeDateFmt(minutes);
+      seconds = this.setTimeDateFmt(seconds);
+      let orderCode =
+        now.getFullYear().toString() +
+        month.toString() +
+        day +
+        hour +
+        minutes +
+        seconds +
+        Math.round(Math.random() * 1000000).toString();
+      return orderCode;
+      //基于年月日时分秒+随机数生成订单编号
+    },
+    /* JS生成指定范围内随机整数 */
+    getRandom(n, m) {
+      let num = Math.floor(Math.random() * (m - n + 1) + n);
+      return num;
     },
   },
 };
