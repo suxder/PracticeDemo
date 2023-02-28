@@ -15,6 +15,7 @@ import {
   Upload,
   Icon,
   Rate,
+  Collapse,
 } from "ant-design-vue";
 
 const ant = {
@@ -36,6 +37,7 @@ const ant = {
     Vue.use(Upload);
     Vue.use(Icon);
     Vue.use(Rate);
+    Vue.use(Collapse);
   },
 };
 export default ant;
