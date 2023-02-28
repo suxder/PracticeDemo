@@ -65,7 +65,6 @@ export default {
   },
   mounted() {
     this.initOrderList();
-    this.initOrderStatus();
   },
   methods: {
     onShowSizeChange(current, pageSize) {
@@ -79,29 +78,31 @@ export default {
       this.onShowSizeChange(1, this.pageSize);
     },
     getStatusColor(itemStatus) {
-      if (itemStatus === 1) {
-        return "Red";
-      } else if (itemStatus === 2) {
-        return "Gold";
-      } else if (itemStatus === 3) {
-        return "DeepSkyBlue";
-      } else if (itemStatus === 4) {
-        return "Green";
-      } else {
-        return "Gold";
+      switch (itemStatus) {
+        case 1:
+          return "Red";
+        case 2:
+          return "Gold";
+        case 3:
+          return "DeepSkyBlue";
+        case 4:
+          return "Green";
+        default:
+          return "Red";
       }
     },
     getStatusText(itemStatus) {
-      if (itemStatus === 1) {
-        return "Pending";
-      } else if (itemStatus === 2) {
-        return "Awaiting Receipt";
-      } else if (itemStatus === 3) {
-        return "Expired";
-      } else if (itemStatus === 4) {
-        return "Completed";
-      } else {
-        return "Awaiting Receipt";
+      switch (itemStatus) {
+        case 1:
+          return "Pending";
+        case 2:
+          return "Awaiting Receipt";
+        case 3:
+          return "Expired";
+        case 4:
+          return "Completed";
+        default:
+          return "Pending";
       }
     },
   },
