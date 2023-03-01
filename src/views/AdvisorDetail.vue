@@ -36,6 +36,7 @@
             }"
           ></span>
         </div>
+        <a-divider></a-divider>
         <div class="advisorDetailPrice">
           <ul>
             <li>
@@ -304,6 +305,7 @@ export default {
   .advisorDetailPrice > ul > li {
     width: 100%;
     height: 8rem;
+    padding: 2rem;
   }
   div.breadcrumbContainer {
     width: 100%;
@@ -317,6 +319,16 @@ export default {
   }
   .advisorMsg div {
     margin: 1rem 0;
+  }
+  div.ant-divider.ant-divider-horizontal {
+    height: 2px;
+    background-color: #f7f7f7;
+  }
+  .advisorAboutContainer {
+    padding: 2rem;
+  }
+  .advisorAboutContainer h3 {
+    font-size: 3rem;
   }
 }
 </style>
