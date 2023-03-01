@@ -452,4 +452,44 @@ ul.ant-rate {
   background-position: center;
   border-radius: 0.5rem;
 }
+
+@media screen and (max-width: 767px) {
+  .placeOrdersContainer {
+    width: 100%;
+  }
+  .advisorTips {
+    display: none;
+  }
+  div.ant-divider.ant-divider-horizontal {
+    display: none;
+  }
+  .smallAvatar {
+    display: none;
+  }
+  .ordersForm {
+    width: 100%;
+    padding: 2rem;
+  }
+  .ordersForm h2 {
+    font-size: 3rem;
+  }
+  span.ant-form-item-children,
+  span.ant-calendar-picker,
+  span.ant-select,
+  span.ant-input-affix-wrapper {
+    display: block;
+    width: 100% !important;
+  }
+  input.ant-input,
+  input.ant-calendar-picker-input {
+    display: block;
+    width: 100% !important;
+  }
+  div.ant-select {
+    width: 100% !important;
+  }
+  button.ant-btn {
+    width: 100%;
+  }
+}
 </style>
