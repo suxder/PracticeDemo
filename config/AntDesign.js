@@ -16,6 +16,7 @@ import {
   Icon,
   Rate,
   Collapse,
+  Empty,
 } from "ant-design-vue";
 
 const ant = {
@@ -38,6 +39,7 @@ const ant = {
     Vue.use(Icon);
     Vue.use(Rate);
     Vue.use(Collapse);
+    Vue.use(Empty);
   },
 };
 export default ant;

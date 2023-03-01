@@ -13,7 +13,7 @@
     </a-breadcrumb>
     <a-divider></a-divider>
     <!-- 订单列表 -->
-    <div class="orderListContainer">
+    <div class="orderListContainer" v-if="this.isHasData === true">
       <div v-for="item in showData" :key="item.id">
         <router-link
           v-bind:to="{ path: '/orderDetails', query: { id: item.orderID } }"
@@ -47,7 +47,8 @@
         <a-divider></a-divider>
       </div>
     </div>
-    <div class="pagination orderListPagination">
+    <a-empty v-else />
+    <div v-if="this.isHasData === true" class="pagination orderListPagination">
       <a-pagination
         v-model="current"
         :total="ordersList.length"
@@ -66,6 +67,7 @@ export default {
       showData: [],
       pageSize: 5,
       current: 1,
+      isHasData: false,
     };
   },
   mounted() {
@@ -80,7 +82,12 @@ export default {
     },
     initOrderList() {
       this.ordersList = JSON.parse(localStorage.getItem("orderList"));
-      this.onShowSizeChange(1, this.pageSize);
+      if (this.ordersList === null) {
+        this.isHasData = false;
+      } else {
+        this.isHasData = true;
+        this.onShowSizeChange(1, this.pageSize);
+      }
     },
     getStatusColor(itemStatus) {
       switch (itemStatus) {
@@ -172,5 +179,13 @@ export default {
 
 .orderListPagination {
   padding: 1rem;
+}
+
+.ant-empty {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 </style>
