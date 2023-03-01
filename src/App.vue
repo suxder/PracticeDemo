@@ -45,11 +45,14 @@
             </div>
           </template>
           <div class="profiles">
+            <div @click="showDrawer" style="width: 8%" class="showDrawer">
+              <a-icon :type="collapsed ? 'menu-unfold' : 'menu-fold'" />
+            </div>
             <div class="avatar">
               <div class="avatarPic"></div>
             </div>
             <div class="avatarMsg">
-              <div class="avatarName">UserName</div>
+              <div class="avatarName">Hi, {{ this.userInfo.name }}</div>
               <div class="avatarAssets">
                 <div class="avatarAssetsNum">0$</div>
                 <div class="avatarAssetsAdd">
@@ -64,6 +67,51 @@
             </div>
           </div>
         </a-popover>
+        <a-drawer
+          title="Navigator"
+          placement="left"
+          :visible="visible"
+          @close="onClose"
+          width="70%"
+        >
+          <div class="menuList showMenuList">
+            <ul>
+              <li>
+                <router-link class="viewLink" to="/allAdvisors"
+                  >Our Advisors</router-link
+                >
+              </li>
+              <li>
+                <router-link class="viewLink" to="/"
+                  >Premium Service</router-link
+                >
+              </li>
+              <li>
+                <router-link class="viewLink" to="/">About US</router-link>
+              </li>
+              <li>
+                <router-link class="viewLink" to="/">Articles</router-link>
+              </li>
+              <li>
+                <router-link class="viewLink" to="/">Purchase</router-link>
+              </li>
+              <li>
+                <router-link class="viewLink" to="/"
+                  >Student Discount</router-link
+                >
+              </li>
+              <li>
+                <router-link class="viewLink" to="/">Contact Us</router-link>
+              </li>
+              <li>
+                <router-link class="viewLink" to="/">My Account</router-link>
+              </li>
+              <li>
+                <router-link class="viewLink" to="/">My Order</router-link>
+              </li>
+            </ul>
+          </div>
+        </a-drawer>
       </div>
     </header>
     <div class="content">
@@ -72,7 +120,7 @@
     <footer>
       <ul>
         <li>
-          <ul>
+          <ul class="footerInfo">
             <li>
               <h3>Explore Soulight</h3>
               <p>All Advisors</p>
@@ -112,8 +160,8 @@
             <li>
               <h3>Get Soulight Mobile App</h3>
               <div class="appStoreLogo">
-                <span>苹果商店</span>
-                <span>Googel Play</span>
+                <span></span>
+                <span></span>
               </div>
               <h3>Follow us</h3>
               <div class="appLogo">
@@ -134,21 +182,39 @@
   </div>
 </template>
 
+<script>
+export default {
+  data() {
+    return {
+      userInfo: {},
+      visible: false,
+      collapsed: false,
+    };
+  },
+  mounted() {
+    this.initUserInfo();
+  },
+  methods: {
+    initUserInfo() {
+      this.userInfo = JSON.parse(localStorage.getItem("userInfo"));
+    },
+    showDrawer() {
+      this.visible = true;
+    },
+    onClose() {
+      this.visible = false;
+    },
+  },
+};
+</script>
+
 <style>
 /* 
   通过媒体查询来控制html的字体大小，
   从而达到控制rem的效果
 */
-@media (max-width: 1200px) {
-  :root {
-    font-size: 0.5em;
-  }
-}
-
-@media (min-width: 1600px) {
-  :root {
-    font-size: 1em;
-  }
+:root {
+  font-size: 1em;
 }
 
 * {
@@ -324,6 +390,10 @@ header {
   color: #291149;
 }
 
+.showDrawer {
+  display: none;
+}
+
 .content {
   flex: 1 0 auto;
   width: 100%;
@@ -337,7 +407,7 @@ header {
 footer {
   background-color: #f1e7ff;
   width: 100%;
-  max-height: 30%;
+  max-height: 40%;
   flex: 0 0 auto;
 }
 
@@ -392,7 +462,7 @@ footer > ul > li:first-child > ul > li {
 
 footer > ul > li:first-child > ul > li:last-child {
   flex: 1;
-  flex-flow: 1;
+  flex-grow: 1;
   padding-left: 2rem;
 }
 
@@ -477,5 +547,101 @@ footer > ul > li:last-child {
   background-repeat: no-repeat;
   background-size: cover;
   background-position: center;
+}
+
+/* 通过媒体查询，提供一套移动端样式 */
+@media screen and (max-width: 767px) {
+  :root {
+    font-size: 0.5em;
+  }
+  header {
+    height: 7vh;
+  }
+  .container {
+    width: 100%;
+  }
+
+  footer > ul {
+    width: 100%;
+  }
+
+  .footerInfo li {
+    display: none;
+  }
+
+  .footerInfo li:last-child {
+    display: block;
+  }
+
+  .appStoreLogo {
+    height: 50%;
+    justify-content: flex-start;
+  }
+  .appStoreLogo span {
+    width: 25%;
+    height: 100%;
+  }
+  .appLogo {
+    width: 30%;
+  }
+  .webInformation {
+    margin: 3rem auto;
+    padding: 0 1rem;
+    text-align: center;
+  }
+  .menuList {
+    display: none;
+  }
+  .webLogo {
+    display: none;
+  }
+  .avatarChat {
+    justify-content: flex-end;
+  }
+  .avatarChatPic {
+    width: 3rem;
+    height: 3rem;
+    margin: 0 2rem;
+  }
+  .avatarAssets {
+    width: 100%;
+    height: 40%;
+  }
+  .avatarPic {
+    width: 5rem;
+    height: 5rem;
+  }
+  .avatarMsg {
+    width: 30%;
+    text-align: center;
+  }
+  .avatarName {
+    text-align: start;
+  }
+  .showDrawer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  .showDrawer .anticon {
+    font-size: 2rem;
+    color: #4d1398;
+  }
+  /* div.ant-popover-inner {
+    display: none;
+  } */
+  .ant-popover.ant-popover-placement-bottom {
+    display: none;
+  }
+  .showMenuList {
+    display: block;
+  }
+  .showMenuList > ul {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+  .showMenuList > ul > li {
+    margin: 2rem 0;
+  }
 }
 </style>

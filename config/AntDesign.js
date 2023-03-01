@@ -17,6 +17,7 @@ import {
   Rate,
   Collapse,
   Empty,
+  Drawer,
 } from "ant-design-vue";
 
 const ant = {
@@ -40,6 +41,7 @@ const ant = {
     Vue.use(Rate);
     Vue.use(Collapse);
     Vue.use(Empty);
+    Vue.use(Drawer);
   },
 };
 export default ant;

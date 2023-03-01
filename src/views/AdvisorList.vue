@@ -258,4 +258,12 @@ button.chatBtn {
   padding-top: 4rem;
   text-align: center;
 }
+
+/* 通过媒体查询，提供一套移动端样式 */
+@media screen and (max-width: 767px) {
+  .advisorContainer {
+    width: 100%;
+    margin: 0;
+  }
+}
 </style>
