@@ -77,37 +77,52 @@
           <div class="menuList showMenuList">
             <ul>
               <li>
-                <router-link class="viewLink" to="/allAdvisors"
+                <router-link
+                  @click.native="onClose()"
+                  class="viewLink"
+                  to="/allAdvisors"
                   >Our Advisors</router-link
                 >
               </li>
               <li>
-                <router-link class="viewLink" to="/"
+                <router-link @click.native="onClose()" class="viewLink" to="/"
                   >Premium Service</router-link
                 >
               </li>
               <li>
-                <router-link class="viewLink" to="/">About US</router-link>
+                <router-link @click.native="onClose()" class="viewLink" to="/"
+                  >About US</router-link
+                >
               </li>
               <li>
-                <router-link class="viewLink" to="/">Articles</router-link>
+                <router-link @click.native="onClose()" class="viewLink" to="/"
+                  >Articles</router-link
+                >
               </li>
               <li>
-                <router-link class="viewLink" to="/">Purchase</router-link>
+                <router-link @click.native="onClose()" class="viewLink" to="/"
+                  >Purchase</router-link
+                >
               </li>
               <li>
-                <router-link class="viewLink" to="/"
+                <router-link @click.native="onClose()" class="viewLink" to="/"
                   >Student Discount</router-link
                 >
               </li>
               <li>
-                <router-link class="viewLink" to="/">Contact Us</router-link>
+                <router-link @click.native="onClose()" class="viewLink" to="/"
+                  >Contact Us</router-link
+                >
               </li>
               <li>
-                <router-link class="viewLink" to="/">My Account</router-link>
+                <router-link @click.native="onClose()" class="viewLink" to="/"
+                  >My Account</router-link
+                >
               </li>
               <li>
-                <router-link class="viewLink" to="/">My Order</router-link>
+                <router-link @click.native="onClose()" class="viewLink" to="/"
+                  >My Order</router-link
+                >
               </li>
             </ul>
           </div>
@@ -202,6 +217,7 @@ export default {
       this.visible = true;
     },
     onClose() {
+      console.log("侦听到点击事件");
       this.visible = false;
     },
   },

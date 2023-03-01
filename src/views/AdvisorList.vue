@@ -265,5 +265,29 @@ button.chatBtn {
     width: 100%;
     margin: 0;
   }
+  .navBarBgi {
+    height: 10vh;
+  }
+  .advisorContainer {
+    padding: 2rem;
+  }
+  .avatarImg {
+    width: 8rem;
+    height: 8rem;
+  }
+  .advisorItemMsg p:last-child {
+    display: none;
+  }
+  button.readBtn,
+  button.chatBtn {
+    width: 12rem;
+    height: 4rem;
+  }
+  .advisorItem {
+    justify-content: space-evenly;
+  }
+  .advisorDetailPrice {
+    width: 100%;
+  }
 }
 </style>

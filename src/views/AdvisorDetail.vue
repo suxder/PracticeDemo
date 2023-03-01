@@ -284,4 +284,39 @@ export default {
   background-repeat: no-repeat;
   border-radius: 50%;
 }
+
+@media screen and (max-width: 767px) {
+  .advisorAvatar {
+    width: 8rem;
+    height: 8rem;
+  }
+  .advisorMsg {
+    height: 100%;
+    width: 100%;
+    flex-direction: column;
+  }
+  .advisorDetailPrice {
+    position: static;
+  }
+  .advisorDetailPrice > ul {
+    padding: 0;
+  }
+  .advisorDetailPrice > ul > li {
+    width: 100%;
+    height: 8rem;
+  }
+  div.breadcrumbContainer {
+    width: 100%;
+    padding: 2rem;
+  }
+  .advisorAboutContainer {
+    width: 100%;
+  }
+  .advisorMsgSim {
+    align-items: center;
+  }
+  .advisorMsg div {
+    margin: 1rem 0;
+  }
+}
 </style>
