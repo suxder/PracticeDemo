@@ -115,12 +115,18 @@
                 >
               </li>
               <li>
-                <router-link @click.native="onClose()" class="viewLink" to="/"
+                <router-link
+                  @click.native="onClose()"
+                  class="viewLink"
+                  to="/account"
                   >My Account</router-link
                 >
               </li>
               <li>
-                <router-link @click.native="onClose()" class="viewLink" to="/"
+                <router-link
+                  @click.native="onClose()"
+                  class="viewLink"
+                  to="/orders"
                   >My Order</router-link
                 >
               </li>

@@ -284,4 +284,31 @@ export default {
 button.ant-btn {
   background-image: linear-gradient(90deg, #8f389d, #7653c5);
 }
+
+@media screen and (max-width: 767px) {
+  .accountContainer {
+    width: 100%;
+  }
+  .accountContainer h2 {
+    font-size: 3rem;
+    padding-left: 2rem;
+  }
+  .formContainer {
+    padding: 0 2rem;
+  }
+  div.ant-row.ant-form-item {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+  }
+  div.ant-col {
+    position: static !important;
+  }
+  div.ant-col-4 {
+    width: 50%;
+  }
+  div.ant-col-16 {
+    width: 100%;
+  }
+}
 </style>

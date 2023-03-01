@@ -473,15 +473,10 @@ ul.ant-rate {
   .ordersForm h2 {
     font-size: 3rem;
   }
-  span.ant-form-item-children,
-  span.ant-calendar-picker,
-  span.ant-select,
-  span.ant-input-affix-wrapper {
-    display: block;
-    width: 100% !important;
-  }
   input.ant-input,
-  input.ant-calendar-picker-input {
+  input.ant-calendar-picker-input,
+  span.ant-calendar-picker,
+  span.ant-input-affix-wrapper {
     display: block;
     width: 100% !important;
   }
