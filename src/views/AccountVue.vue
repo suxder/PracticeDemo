@@ -88,7 +88,7 @@
           <a-input v-model="userInfoFormData.email" style="width: 50%" />
         </a-form-model-item>
 
-        <!-- 电话号码（带不同国家的区号） -->
+        <!-- 电话号码（带不同国家的区号）-->
         <a-form-model-item
           label="Phone Number"
           :label-col="{ span: 4 }"
