@@ -21,7 +21,11 @@
     <div class="orderDetailBox">
       <div class="orderDetail">
         <div class="orderDetailCard">
-          <a-collapse expandIconPosition="right" :bordered="false">
+          <a-collapse
+            expandIconPosition="right"
+            :bordered="false"
+            default-active-key="1"
+          >
             <a-collapse-panel
               key="1"
               style="
@@ -46,10 +50,14 @@
           </a-collapse>
         </div>
         <div class="RequestDetailCard">
-          <a-collapse expandIconPosition="right" :bordered="false">
+          <a-collapse
+            expandIconPosition="right"
+            :bordered="false"
+            default-active-key="1"
+          >
             <a-collapse-panel
+              class="collapseItem"
               key="1"
-              class=" "
               style="
                 background: #fff;
                 border-radius: 4px;
@@ -161,24 +169,44 @@
           <ul>
             <li class="toggleList">
               <div>Reading</div>
-              <div>Service</div>
+              <div>
+                <img class="serviceImg" src="../assets/imgs/diamonds.png" />
+                Service
+              </div>
             </li>
             <li>
-              <p>Text Reading</p>
-              <i>Delivered within 24h</i>
+              <div>
+                <p>Text Reading</p>
+                <i>Delivered within 24h</i>
+              </div>
+              <div><button>$11.99</button></div>
             </li>
             <li>
-              <p>Audio Reading</p>
-              <i>Delivered within 24h</i>
+              <div>
+                <p>Audio Reading</p>
+                <i>Delivered within 24h</i>
+              </div>
+              <div><button>$3.99</button></div>
             </li>
             <li>
-              <p>Video Reading</p>
-              <i>Delivered within 24h</i>
+              <div>
+                <p>Video Reading</p>
+                <i>Delivered within 24h</i>
+              </div>
+              <div><button>$4.49</button></div>
             </li>
             <li>
-              <p>Live Text Chat</p>
+              <div>
+                <p>Live Text Chat</p>
+              </div>
+              <div><button class="liveChatBtn">$0.99/min</button></div>
             </li>
           </ul>
+        </div>
+        <div class="servicePreview">
+          <img class="serviceExampleImg" src="../assets/imgs/example.svg" />
+          <h3>See what you will get:</h3>
+          <button>Service Preview</button>
         </div>
       </div>
     </div>
@@ -224,7 +252,6 @@ export default {
       this.orderDetail = orderList.filter(
         (item) => item.orderID === orderID
       )[0];
-      console.log(this.orderDetail);
     },
     getStatusColor(itemStatus) {
       switch (itemStatus) {
@@ -272,8 +299,8 @@ export default {
   },
   created() {},
   mounted() {
-    this.changeCollapseHeader();
     this.getOrderDetailByID();
+    this.changeCollapseHeader();
     this.initUserInfo();
   },
 };
@@ -385,6 +412,34 @@ div.ant-divider-horizontal {
 
 .orderDetailPrice li {
   width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.orderDetailPrice li div:last-child {
+  width: 30%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.orderDetailPrice li div:last-child button {
+  width: 100%;
+  height: 65%;
+  background-image: linear-gradient(90deg, #8f389d, #7653c5);
+  border: none;
+  border-radius: 4px;
+  font-family: "poppins-Medium";
+  font-size: 0.8rem;
+  color: #fff;
+}
+
+.orderDetailPrice li:last-child div:last-child button {
+  background-image: none;
+  background-color: #8d8686;
 }
 
 li.toggleList {
@@ -403,6 +458,11 @@ li.toggleList div {
   line-height: 40px;
 }
 
+.orderDetailPrice li:first-child div {
+  width: 50%;
+  flex-direction: row;
+}
+
 li.toggleList div:first-child {
   background-image: linear-gradient(90deg, #8f389d, #7653c5);
   color: #fff;
@@ -410,5 +470,49 @@ li.toggleList div:first-child {
 
 li.toggleList div:last-child {
   color: #4d1398;
+}
+
+.servicePreview {
+  position: relative;
+  width: 80%;
+  height: 15vh;
+  background-color: #fff;
+  border: none;
+  border-radius: 4px;
+  box-shadow: 0 3px 8px #d3ddeb;
+  margin: 4rem auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.servicePreview button {
+  height: 20%;
+  background-image: linear-gradient(90deg, #8f389d, #7653c5);
+  border: none;
+  border-radius: 4px;
+  font-family: "poppins-Medium";
+  font-size: 0.8rem;
+  color: #fff;
+  margin: 1rem 0;
+  padding: 0 1rem;
+}
+
+.servicePreview h3 {
+  font-style: italic;
+  font-family: "poppins-Bold";
+  font-size: 1rem;
+  color: #4d1398;
+}
+
+.serviceImg {
+  width: 1rem;
+  height: 1rem;
+}
+
+.serviceExampleImg {
+  position: absolute;
+  top: -20%;
 }
 </style>
