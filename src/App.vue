@@ -68,7 +68,7 @@
           </div>
         </a-popover>
         <a-drawer
-          title="Navigator"
+          title="."
           placement="left"
           :visible="visible"
           @close="onClose"
@@ -81,37 +81,47 @@
                   @click.native="onClose()"
                   class="viewLink"
                   to="/allAdvisors"
-                  >Our Advisors</router-link
+                  ><img src="./assets/imgs/mobileMenulist/ourAdvisors.png" />Our
+                  Advisors</router-link
                 >
               </li>
               <li>
                 <router-link @click.native="onClose()" class="viewLink" to="/"
-                  >Premium Service</router-link
+                  ><img src="./assets/imgs/mobileMenulist/premiService.png" />
+                  Premium Service</router-link
                 >
               </li>
               <li>
                 <router-link @click.native="onClose()" class="viewLink" to="/"
-                  >About US</router-link
+                  ><img src="./assets/imgs/mobileMenulist/about.png" />About
+                  US</router-link
                 >
               </li>
               <li>
                 <router-link @click.native="onClose()" class="viewLink" to="/"
-                  >Articles</router-link
+                  ><img
+                    src="./assets/imgs/mobileMenulist/about.png"
+                  />Articles</router-link
                 >
               </li>
               <li>
                 <router-link @click.native="onClose()" class="viewLink" to="/"
-                  >Purchase</router-link
+                  ><img
+                    src="./assets/imgs/mobileMenulist/purchase.png"
+                  />Purchase</router-link
                 >
               </li>
               <li>
                 <router-link @click.native="onClose()" class="viewLink" to="/"
-                  >Student Discount</router-link
+                  ><img
+                    src="./assets/imgs/mobileMenulist/studentAccount.png"
+                  />Student Discount</router-link
                 >
               </li>
               <li>
                 <router-link @click.native="onClose()" class="viewLink" to="/"
-                  >Contact Us</router-link
+                  ><img src="./assets/imgs/mobileMenulist/contact.png" />Contact
+                  Us</router-link
                 >
               </li>
               <li>
@@ -119,7 +129,8 @@
                   @click.native="onClose()"
                   class="viewLink"
                   to="/account"
-                  >My Account</router-link
+                  ><img src="./assets/imgs/mobileMenulist/mine.png" />My
+                  Account</router-link
                 >
               </li>
               <li>
@@ -127,7 +138,8 @@
                   @click.native="onClose()"
                   class="viewLink"
                   to="/orders"
-                  >My Order</router-link
+                  ><img src="./assets/imgs/mobileMenulist/mine.png" />My
+                  Order</router-link
                 >
               </li>
             </ul>
@@ -662,8 +674,30 @@ footer > ul > li:last-child {
     flex-direction: column;
     align-items: flex-start;
   }
-  .showMenuList > ul > li {
+  div.showMenuList > ul > li {
     margin: 2rem 0;
   }
+  /* 移动端时设置抽屉左端logo */
+  div.ant-drawer-title {
+    width: 55%;
+    line-height: 4rem;
+    background-image: url("./assets/imgs/soulightNav@3x.png");
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+    color: transparent;
+  }
+}
+</style>
+
+<style scoped>
+.viewLink {
+  font-family: "poppins-Medium";
+  font-size: 1rem;
+  color: #4d1398;
+}
+.viewLink img {
+  width: 2rem;
+  margin-right: 1rem;
 }
 </style>

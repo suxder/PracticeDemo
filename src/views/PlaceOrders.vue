@@ -493,5 +493,8 @@ ul.ant-rate {
   .breadcrumbContainer {
     width: 100%;
   }
+  .placeOrders {
+    margin-top: 2rem;
+  }
 }
 </style>

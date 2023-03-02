@@ -188,7 +188,9 @@ export default {
   justify-content: center;
   align-items: center;
 }
+</style>
 
+<style scoped>
 @media screen and (max-width: 767px) {
   .orderContainer {
     width: 100%;
@@ -198,6 +200,9 @@ export default {
   }
   div.orderItem {
     padding: 2rem;
+  }
+  div.ant-breadcrumb {
+    padding: 0 2rem;
   }
 }
 </style>

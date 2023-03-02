@@ -539,3 +539,9 @@ li.toggleList div:last-child {
   }
 }
 </style>
+
+<style scoped>
+div.ant-breadcrumb {
+  padding: 0 2rem;
+}
+</style>
