@@ -282,11 +282,6 @@ export default {
   width: 20px;
   height: 10px;
 }
-
-div.ant-select.ant-select-enabled {
-  max-width: 17%;
-}
-
 /* 设置提交按钮背景色彩 */
 button.ant-btn {
   background-image: linear-gradient(90deg, #8f389d, #7653c5);
@@ -346,5 +341,8 @@ button.ant-btn {
   button.ant-btn {
     width: 100%;
   }
+}
+div.ant-select.ant-select-enabled {
+  max-width: 17%;
 }
 </style>
