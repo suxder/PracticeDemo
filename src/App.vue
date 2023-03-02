@@ -691,13 +691,15 @@ footer > ul > li:last-child {
 </style>
 
 <style scoped>
-.viewLink {
-  font-family: "poppins-Medium";
-  font-size: 1rem;
-  color: #4d1398;
-}
-.viewLink img {
-  width: 2rem;
-  margin-right: 1rem;
+@media screen and (max-width: 767px) {
+  .viewLink {
+    font-family: "poppins-Medium";
+    font-size: 1rem;
+    color: #4d1398;
+  }
+  .viewLink img {
+    width: 2rem;
+    margin-right: 1rem;
+  }
 }
 </style>
