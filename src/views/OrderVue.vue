@@ -188,4 +188,16 @@ export default {
   justify-content: center;
   align-items: center;
 }
+
+@media screen and (max-width: 767px) {
+  .orderContainer {
+    width: 100%;
+  }
+  div.smallAvatar {
+    display: block;
+  }
+  div.orderItem {
+    padding: 2rem;
+  }
+}
 </style>
