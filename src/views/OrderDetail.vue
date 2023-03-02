@@ -515,4 +515,27 @@ li.toggleList div:last-child {
   position: absolute;
   top: -20%;
 }
+
+@media screen and (max-width: 767px) {
+  .orderDetailContainer {
+    width: 100%;
+  }
+  /*   .advisorDetailBox {
+    display: none;
+  } */
+  .OrderDetailBreadcrumbContainer {
+    width: 100%;
+  }
+  .orderDetailBox {
+    flex-direction: column-reverse;
+  }
+  .orderDetail {
+    width: 100%;
+    height: 90vh;
+  }
+  .advisorDetailBox {
+    width: 100%;
+    border: none;
+  }
+}
 </style>
