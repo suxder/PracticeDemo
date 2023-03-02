@@ -281,13 +281,6 @@ export default {
   margin: 0 auto;
 }
 
-.breadcrumbContainer {
-  height: 40px;
-  width: 1200px;
-  margin: 0 auto;
-  padding-top: 2rem;
-}
-
 .placeBreadcrumb {
   padding-bottom: 2rem;
 }
@@ -473,6 +466,17 @@ ul.ant-rate {
   .ordersForm h2 {
     font-size: 3rem;
   }
+}
+</style>
+
+<style scoped>
+.breadcrumbContainer {
+  height: 40px;
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+@media screen and (max-width: 767px) {
   input.ant-input,
   input.ant-calendar-picker-input,
   span.ant-calendar-picker,
@@ -484,6 +488,9 @@ ul.ant-rate {
     width: 100% !important;
   }
   button.ant-btn {
+    width: 100%;
+  }
+  .breadcrumbContainer {
     width: 100%;
   }
 }

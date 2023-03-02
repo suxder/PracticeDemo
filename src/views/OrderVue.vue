@@ -123,7 +123,7 @@ export default {
 
 <style>
 .orderContainer {
-  min-height: 58vh;
+  min-height: 62vh;
   width: 1200px;
   margin: 0 auto;
   display: flex;

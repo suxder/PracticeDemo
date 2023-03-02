@@ -98,7 +98,6 @@
           <a-select
             show-search
             v-model="this.userInfoFormData.AreaCode"
-            style="max-width: 17%"
             @change="handleChange"
             option-filter-prop="label"
           >
@@ -120,7 +119,11 @@
             </a-select-option>
           </a-select>
 
-          <a-input v-model="userInfoFormData.PhoneNumber" style="width: 33%" />
+          <a-input
+            class="phoneNumberInput"
+            v-model="userInfoFormData.PhoneNumber"
+            style="width: 33%"
+          />
         </a-form-model-item>
 
         <!-- 提交表单信息按钮 -->
@@ -280,6 +283,10 @@ export default {
   height: 10px;
 }
 
+div.ant-select.ant-select-enabled {
+  max-width: 17%;
+}
+
 /* 设置提交按钮背景色彩 */
 button.ant-btn {
   background-image: linear-gradient(90deg, #8f389d, #7653c5);
@@ -308,6 +315,35 @@ button.ant-btn {
     width: 50%;
   }
   div.ant-col-16 {
+    width: 100%;
+  }
+  div.ant-col-offset-4 {
+    margin: 0;
+  }
+  div.ant-col-14 {
+    width: 100%;
+  }
+}
+</style>
+
+<style scoped>
+@media screen and (max-width: 767px) {
+  input.ant-input,
+  input.ant-calendar-picker-input,
+  span.ant-calendar-picker,
+  span.ant-input-affix-wrapper {
+    width: 100% !important;
+  }
+  input.ant-input {
+    display: inline-block;
+  }
+  input.phoneNumberInput.ant-input {
+    width: 50% !important;
+  }
+  div.ant-select.ant-select-enabled {
+    max-width: 50%;
+  }
+  button.ant-btn {
     width: 100%;
   }
 }

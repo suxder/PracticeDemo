@@ -36,7 +36,6 @@
             }"
           ></span>
         </div>
-        <a-divider></a-divider>
         <div class="advisorDetailPrice">
           <ul>
             <li>
@@ -150,19 +149,14 @@ export default {
 <style>
 .advisorDetail {
   width: 100%;
-  min-height: 58vh;
+  height: 100%;
 }
 
 .advisorDetailContainer {
+  height: 100%;
   width: 100%;
   display: flex;
   flex-direction: column;
-}
-
-.breadcrumbContainer {
-  width: 1200px;
-  margin: 0 auto;
-  padding-top: 2rem;
 }
 
 .advisorMsg {
@@ -210,8 +204,8 @@ export default {
 }
 
 .advisorAbout {
+  flex: 1 0 auto;
   width: 100%;
-  height: 50vh;
   background-color: #fcf8ff;
   padding: 2rem 0;
 }
@@ -329,6 +323,20 @@ export default {
   }
   .advisorAboutContainer h3 {
     font-size: 3rem;
+  }
+}
+</style>
+
+<style scoped>
+.breadcrumbContainer {
+  height: 40px;
+  width: 1200px;
+  margin: 0 auto;
+  padding-top: 2rem;
+}
+@media screen and (max-width: 767px) {
+  .breadcrumbContainer {
+    width: 100%;
   }
 }
 </style>
