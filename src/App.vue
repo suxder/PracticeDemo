@@ -687,6 +687,12 @@ footer > ul > li:last-child {
     background-position: center;
     color: transparent;
   }
+  div.footColorBar {
+    height: 1.5vh;
+  }
+  div.content {
+    padding-top: 7vh;
+  }
 }
 </style>
 

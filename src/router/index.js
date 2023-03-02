@@ -7,6 +7,7 @@ import AccountVue from "@/views/AccountVue.vue";
 import OrderVue from "@/views/OrderVue.vue";
 import PlaceOrders from "@/views/PlaceOrders.vue";
 import OrderDetail from "@/views/OrderDetail.vue";
+import ChatPay from "@/views/ChatPay.vue";
 
 Vue.use(VueRouter);
 
@@ -45,6 +46,11 @@ const routes = [
     path: "/orderDetails",
     name: "orderDetails",
     component: OrderDetail,
+  },
+  {
+    path: "/chatPay",
+    name: "chatPay",
+    component: ChatPay,
   },
 ];
 

@@ -57,7 +57,13 @@
               <i>Delivered within 24h</i>
             </li>
             <li>
-              <p>Live Text Chat</p>
+              <router-link
+                v-bind:to="{
+                  path: '/chatPay',
+                  query: { id: this.advisorItemID },
+                }"
+                ><p>Live Text Chat</p></router-link
+              >
             </li>
             <li>
               <p>Live Audio Chat</p>
