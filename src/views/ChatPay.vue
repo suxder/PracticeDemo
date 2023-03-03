@@ -60,7 +60,11 @@
       <!-- 选择聊天时间 -->
       <div class="chatTimeSelector">
         <a-form-model-item label="Select Chat Time">
-          <a-select :default-value="this.chatTime" class="selectTimeHead">
+          <a-select
+            :default-value="this.chatTime"
+            class="selectTimeHead"
+            @change="handleChange"
+          >
             <a-select-option :value="3">
               <div class="chatTimeItem">
                 <span>3 Minutes Chat</span>
@@ -100,9 +104,88 @@
           </a-select>
         </a-form-model-item>
       </div>
-      <div class="breakDown"></div>
-      <div class="paymentMethodSelect"></div>
-      <div class="cardForm"></div>
+      <div class="breakDown">
+        <h3>Breakdown</h3>
+        <div class="costItems">
+          <p>
+            <span>{{ this.chatTime }} Minutes Chat</span>
+            <span>${{ this.chatTime * 6 - 0.23 }}</span>
+          </p>
+          <p>
+            <span>Current Balance</span>
+            <span>$0.00</span>
+          </p>
+        </div>
+        <div class="allCost">
+          <p>
+            <span>Additional Credits Required</span>
+            <span>${{ this.chatTime * 6 - 0.23 }}</span>
+          </p>
+        </div>
+      </div>
+      <div class="paymentMethodSelect">
+        <h3>Select Payment Method</h3>
+        <div class="methodSelectBox">
+          <div
+            class="payMethods ActiveSelected"
+            @click="togglePayMethods($event)"
+          >
+            Bank Card
+          </div>
+          <div class="payMethods" @click="togglePayMethods($event)">PayPal</div>
+        </div>
+      </div>
+      <div class="cardForm">
+        <a-form-model>
+          <!-- Card Number -->
+          <a-form-model-item label="CardNumber">
+            <a-input
+              placeholder="Please enter the card number"
+              v-model="payCardMsg.cardName"
+              style="width: 100%"
+            />
+          </a-form-model-item>
+
+          <!-- Expiration Day -->
+          <a-form-model-item label="ExpirationDay">
+            <a-month-picker
+              placeholder="Please enter the expiration date"
+              type="date"
+              v-model="payCardMsg.expirationDate"
+              style="width: 100%"
+            />
+          </a-form-model-item>
+
+          <!-- Name on Card -->
+          <a-form-model-item label="NameOnCard">
+            <a-input
+              placeholder="Please enter the name on card"
+              v-model="payCardMsg.nameOnCard"
+              style="width: 100%"
+            />
+          </a-form-model-item>
+
+          <!-- CVC -->
+          <a-form-model-item label="CVCName">
+            <a-input
+              placeholder="Please enter the name on card"
+              v-model="payCardMsg.CVCName"
+              style="width: 100%"
+            />
+          </a-form-model-item>
+
+          <a-form-model-item>
+            <a-button
+              type="primary"
+              @click="onSubmit"
+              size="large"
+              style="width: 100%"
+            >
+              Use This Card
+            </a-button>
+          </a-form-model-item>
+        </a-form-model>
+      </div>
     </div>
   </div>
 </template>
@@ -120,6 +203,12 @@ export default {
         avatarUrl: "/avatar01.webp",
       },
       chatTime: 3,
+      payCardMsg: {
+        cardName: "",
+        expirationDate: "",
+        nameOnCard: "",
+        CVCName: "",
+      },
     };
   },
   watch: {},
@@ -133,6 +222,17 @@ export default {
       this.advisorItemID = this.$route.query.id;
       this.getItemByID();
     },
+    handleChange(value) {
+      this.chatTime = value;
+    },
+    togglePayMethods(e) {
+      const btns = document.querySelectorAll(".payMethods");
+      btns.forEach((item) => {
+        item.classList.remove("ActiveSelected");
+      });
+      e.target.classList.add("ActiveSelected");
+    },
+    onSubmit() {},
   },
   created() {},
   mounted() {
@@ -224,10 +324,60 @@ div.chatTimeItem {
   ) {
   float: none;
 }
+.breakDown {
+  background-color: rgb(204, 204, 204, 0.1);
+  padding: 2rem;
+  border-radius: 1rem;
+}
+.costItems {
+  border-bottom: 1px dashed rgb(0, 191, 255, 0.4);
+}
+.allCost p {
+  margin-top: 1rem;
+  margin-bottom: 0;
+}
+.breakDown div p {
+  display: flex;
+  justify-content: space-between;
+}
+.paymentMethodSelect h3 {
+  font-family: "poppins-Bold";
+  font-size: 2rem;
+  color: #4d1398;
+}
+.methodSelectBox {
+  width: 100%;
+  box-shadow: 0 3px 8px #d3ddeb;
+  border-radius: 1rem;
+  padding: 0.5rem;
+  display: flex;
+  justify-content: space-between;
+  text-align: center;
+}
+.methodSelectBox div {
+  width: 50%;
+  height: 4rem;
+  line-height: 4rem;
+  color: #4d1398;
+  font-family: "poppins-Medium";
+}
+div.ActiveSelected {
+  background-image: linear-gradient(90deg, #8f389d, #7653c5);
+  border-radius: 1rem;
+  color: #fff;
+}
+:global(div.cardForm div.ant-form-item-label > label) {
+  font-family: "poppins-Medium";
+  color: #111 !important;
+}
+:global(div.cardForm div.ant-form-item) {
+  margin: 1rem 0;
+}
 </style>
 
 <style>
-div.chatPayCard > div {
+div.chatPayCard > div:nth-child(2),
+div.chatPayCard > div:nth-child(4) {
   margin-top: 2rem;
 }
 </style>
