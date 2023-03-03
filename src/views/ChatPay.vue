@@ -136,9 +136,9 @@
         </div>
       </div>
       <div class="cardForm">
-        <a-form-model>
+        <a-form-model :rules="rules" :model="payCardMsg" ref="payCardForm">
           <!-- Card Number -->
-          <a-form-model-item label="CardNumber">
+          <a-form-model-item label="CardNumber" prop="cardName">
             <a-input
               placeholder="Please enter the card number"
               v-model="payCardMsg.cardName"
@@ -149,7 +149,7 @@
           </a-form-model-item>
 
           <!-- Expiration Day -->
-          <a-form-model-item label="ExpirationDay">
+          <a-form-model-item label="ExpirationDay" prop="expirationDate">
             <a-month-picker
               placeholder="Please enter the expiration date"
               type="date"
@@ -160,7 +160,7 @@
           </a-form-model-item>
 
           <!-- Name on Card -->
-          <a-form-model-item label="NameOnCard">
+          <a-form-model-item label="NameOnCard" prop="nameOnCard">
             <a-input
               placeholder="Please enter the name on card"
               v-model="payCardMsg.nameOnCard"
@@ -169,7 +169,7 @@
           </a-form-model-item>
 
           <!-- CVC -->
-          <a-form-model-item label="CVCName">
+          <a-form-model-item label="CVCName" prop="CVCName">
             <a-input
               placeholder="Please enter the name on card"
               v-model="payCardMsg.CVCName"
@@ -208,9 +208,39 @@ export default {
       chatTime: 3,
       payCardMsg: {
         cardName: "",
-        expirationDate: "",
+        expirationDate: "2023-03",
         nameOnCard: "",
         CVCName: "",
+      },
+      rules: {
+        cardName: [
+          {
+            required: true,
+            message: "Please input your Card Name",
+            trigger: "blur",
+          },
+        ],
+        expirationDate: [
+          {
+            required: true,
+            message: "Please input your Expiration Date",
+            trigger: "blur",
+          },
+        ],
+        nameOnCard: [
+          {
+            required: true,
+            message: "Please input your Name on Card",
+            trigger: "blur",
+          },
+        ],
+        CVCName: [
+          {
+            required: true,
+            message: "Please input your CVC Name",
+            trigger: "blur",
+          },
+        ],
       },
     };
   },
@@ -235,7 +265,17 @@ export default {
       });
       e.target.classList.add("ActiveSelected");
     },
-    onSubmit() {},
+    onSubmit() {
+      this.$refs.payCardForm.validate((valid) => {
+        if (valid) {
+          this.$message.success("信息提交成功！");
+          this.$refs.payCardForm.resetFields();
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
+    },
   },
   created() {},
   mounted() {
@@ -373,8 +413,8 @@ div.ActiveSelected {
   font-family: "poppins-Medium";
   color: #111 !important;
 }
-:global(div.cardForm div.ant-form-item) {
-  margin: 1rem 0;
+:global(div.cardForm div.ant-form-item:first-child) {
+  margin-top: 1rem;
 }
 </style>
 

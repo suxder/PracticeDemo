@@ -222,6 +222,7 @@ export default {
           };
           this.$store.commit("addOrdersItem", orderOBJ);
           this.$message.success("订单提交成功！");
+          this.$refs.orderInfoForm.resetFields();
           /* 清空表单中的数据 */
           this.orderItem.GeneralSituation = "";
           this.orderItem.SpecificQuestion = "";
