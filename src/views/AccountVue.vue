@@ -322,6 +322,9 @@ button.ant-btn {
 </style>
 
 <style scoped>
+div.ant-select.ant-select-enabled {
+  max-width: 17%;
+}
 @media screen and (max-width: 767px) {
   input.ant-input,
   input.ant-calendar-picker-input,
@@ -341,8 +344,5 @@ button.ant-btn {
   button.ant-btn {
     width: 100%;
   }
-}
-div.ant-select.ant-select-enabled {
-  max-width: 17%;
 }
 </style>

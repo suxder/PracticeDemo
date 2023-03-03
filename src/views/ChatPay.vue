@@ -60,43 +60,38 @@
       <!-- 选择聊天时间 -->
       <div class="chatTimeSelector">
         <a-form-model-item label="Select Chat Time">
-          <a-select
-            :default-value="this.chatTime"
-            style="width: 100%; float: none"
-            dropdown-style="float: none;"
-            option-label-prop="label"
-          >
-            <a-select-option :value="3" label="3 Minutes Chat:$17.97 ">
+          <a-select :default-value="this.chatTime" class="selectTimeHead">
+            <a-select-option :value="3">
               <div class="chatTimeItem">
                 <span>3 Minutes Chat</span>
                 <span><i>$17.97</i></span>
               </div>
             </a-select-option>
-            <a-select-option :value="5" label="5 Minutes Chat:$29.97 ">
+            <a-select-option :value="5">
               <div class="chatTimeItem">
                 <span>5 Minutes Chat</span>
                 <span><i>$29.97</i></span>
               </div>
             </a-select-option>
-            <a-select-option :value="10" label="10 Minutes Chat:$59.97 ">
+            <a-select-option :value="10">
               <div class="chatTimeItem">
                 <span>10 Minutes Chat</span>
                 <span><i>$59.97</i></span>
               </div>
             </a-select-option>
-            <a-select-option :value="15" label="15 Minutes Chat:$89.97 ">
+            <a-select-option :value="15">
               <div class="chatTimeItem">
                 <span>15 Minutes Chat</span>
                 <span><i>$89.97</i></span>
               </div>
             </a-select-option>
-            <a-select-option :value="20" label="20 Minutes Chat:$119.97 ">
+            <a-select-option :value="20">
               <div class="chatTimeItem">
                 <span>20 Minutes Chat</span>
                 <span><i>$119.97</i></span>
               </div>
             </a-select-option>
-            <a-select-option :value="25" label="25 Minutes Chat:$149.97 ">
+            <a-select-option :value="25">
               <div class="chatTimeItem">
                 <span>25 Minutes Chat</span>
                 <span><i>$149.97</i></span>
@@ -220,6 +215,14 @@ div.chatTimeItem {
   display: flex;
   justify-content: space-between;
   width: 100%;
+}
+:global(
+    div.selectTimeHead
+      > div.ant-select-selection
+      > div.ant-select-selection__rendered
+      > div.ant-select-selection-selected-value
+  ) {
+  float: none;
 }
 </style>
 
