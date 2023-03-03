@@ -17,21 +17,25 @@
     <a-divider></a-divider>
     <h2>User Information</h2>
     <div class="formContainer">
-      <a-form-model>
+      <a-form-model :rules="rules" ref="userInfoForm" :model="userInfoFormData">
         <!-- 姓名 -->
         <a-form-model-item
+          ref="name"
           label="Name"
           :label-col="{ span: 4 }"
           :wrapper-col="{ span: 16 }"
+          prop="name"
         >
           <a-input v-model="userInfoFormData.name" style="width: 50%" />
         </a-form-model-item>
 
         <!-- 生日 -->
         <a-form-model-item
+          ref="BirthDay"
           label="Date Of Birth"
           :label-col="{ span: 4 }"
           :wrapper-col="{ span: 16 }"
+          prop="BirthDay"
         >
           <a-date-picker
             type="date"
@@ -43,6 +47,8 @@
 
         <!-- 性别 -->
         <a-form-model-item
+          ref="Gender"
+          prop="Gender"
           label="Gender"
           :label-col="{ span: 4 }"
           :wrapper-col="{ span: 16 }"
@@ -81,6 +87,8 @@
 
         <!-- Email -->
         <a-form-model-item
+          ref="email"
+          prop="email"
           label="Email Address"
           :label-col="{ span: 4 }"
           :wrapper-col="{ span: 16 }"
@@ -90,6 +98,8 @@
 
         <!-- 电话号码（带不同国家的区号）-->
         <a-form-model-item
+          ref="PhoneNumber"
+          prop="PhoneNumber"
           label="Phone Number"
           :label-col="{ span: 4 }"
           :wrapper-col="{ span: 16 }"
@@ -123,6 +133,11 @@
             class="phoneNumberInput"
             v-model="userInfoFormData.PhoneNumber"
             style="width: 33%"
+            @change="
+              () => {
+                $refs.PhoneNumber.onFieldChange();
+              }
+            "
           />
         </a-form-model-item>
 
@@ -143,6 +158,34 @@ import moment from "moment";
 export default {
   data() {
     this.dateFormat = "YYYY-MM-DD";
+    /* 自定义邮箱匹配规则 */
+    let checkEmail = (rule, value, callback) => {
+      if (!value) {
+        callback(new Error("Please input your Email Address!"));
+      } else {
+        let patt = new RegExp(/^\w+([-+.]\w+)*@\w+([-.]\w+)*\.\w+([-.]\w+)*$/);
+        if (patt.test(value) === false) {
+          callback(new Error("Please input right Email Address!"));
+        } else {
+          callback();
+        }
+      }
+    };
+    /* 自定义邮箱匹配规则 */
+    let checkPhoneNumber = (rule, value, callback) => {
+      if (!value) {
+        callback(new Error("Please input your PhoneNumber!"));
+      } else {
+        let patt = new RegExp(
+          /^(13[0-9]|14[5|7]|15[0|1|2|3|4|5|6|7|8|9]|18[0|1|2|3|5|6|7|8|9])\d{8}$/
+        );
+        if (patt.test(value) === false) {
+          callback(new Error("Please input right PhoneNumber!"));
+        } else {
+          callback();
+        }
+      }
+    };
     return {
       userInfoFormData: {
         name: "张怡然",
@@ -182,6 +225,32 @@ export default {
           AreaCode: "33",
         },
       ],
+      rules: {
+        name: [
+          {
+            required: true,
+            message: "Please input your name",
+            trigger: "blur",
+          },
+          {
+            min: 3,
+            max: 5,
+            message: "Length should be 3 to 5",
+            trigger: "blur",
+          },
+        ],
+        BirthDay: [
+          { required: true, message: "Please pick a date", trigger: "change" },
+        ],
+        Gender: [{ required: true, trigger: "blur" }],
+        email: [
+          {
+            validator: checkEmail,
+            trigger: "change",
+          },
+        ],
+        PhoneNumber: [{ validator: checkPhoneNumber, trigger: "change" }],
+      },
     };
   },
   mounted() {
@@ -193,8 +262,18 @@ export default {
       this.userInfoFormData.AreaCode = value;
     },
     onSubmit() {
-      localStorage.setItem("userInfo", JSON.stringify(this.userInfoFormData));
-      this.$message.success("信息修改成功！");
+      this.$refs.userInfoForm.validate((valid) => {
+        if (valid) {
+          localStorage.setItem(
+            "userInfo",
+            JSON.stringify(this.userInfoFormData)
+          );
+          this.$message.success("信息修改成功！");
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
     },
     pullData() {
       const cacheData = JSON.parse(localStorage.getItem("userInfo"));
@@ -287,6 +366,10 @@ button.ant-btn {
   background-image: linear-gradient(90deg, #8f389d, #7653c5);
 }
 
+button.ant-btn-primary:hover,
+button.ant-btn-primary:focus {
+  background-image: linear-gradient(90deg, #8f389d, #7653c5);
+}
 @media screen and (max-width: 767px) {
   .accountContainer {
     width: 100%;
