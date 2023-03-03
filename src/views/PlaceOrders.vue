@@ -33,7 +33,7 @@
       <div class="ordersForm">
         <h2>Place Orders</h2>
         <div class="formContainer placeOrdersForm">
-          <a-form-model>
+          <a-form-model :rules="rules" ref="orderInfoForm" :model="orderItem">
             <!-- 姓名 -->
             <a-form-model-item label="Name">
               <a-input
@@ -69,7 +69,10 @@
             </a-form-model-item>
 
             <!-- General Situation -->
-            <a-form-model-item label="General Situation">
+            <a-form-model-item
+              label="General Situation"
+              prop="GeneralSituation"
+            >
               <a-textarea
                 v-model="orderItem.GeneralSituation"
                 :autoSize="{ minRows: 3, maxRows: 6 }"
@@ -81,7 +84,11 @@
             </a-form-model-item>
 
             <!-- Specific Question -->
-            <a-form-model-item label="Specific Question" class="speQuestion">
+            <a-form-model-item
+              label="Specific Question"
+              class="speQuestion"
+              prop="SpecificQuestion"
+            >
               <a-textarea
                 v-model="orderItem.SpecificQuestion"
                 :autoSize="{ minRows: 1, maxRows: 3 }"
@@ -150,6 +157,22 @@ export default {
   data() {
     this.dateFormat = "YYYY-MM-DD";
     return {
+      rules: {
+        GeneralSituation: [
+          {
+            required: true,
+            message: "Please input your general situation",
+            trigger: "blur",
+          },
+        ],
+        SpecificQuestion: [
+          {
+            required: true,
+            message: "Please input your specific question",
+            trigger: "blur",
+          },
+        ],
+      },
       advisorItemID: null,
       itemAdvisorMsg: {
         avatarUrl: "/avatar03.webp",
@@ -182,25 +205,32 @@ export default {
       this.userInfoFormData = JSON.parse(localStorage.getItem("userInfo"));
     },
     onSubmit() {
-      /* 组织一个对象，减少代码冗余 */
-      const orderOBJ = {
-        orderID: this.createOrderNum(),
-        advisorName: this.itemAdvisorMsg.name,
-        GeneralSituation: this.orderItem.GeneralSituation,
-        SpecificQuestion: this.orderItem.SpecificQuestion,
-        orderTime: new Date().toLocaleString(),
-        advisorID: this.advisorItemID,
-        advisorAvatar: this.itemAdvisorMsg.avatarUrl,
-        orderType: "Text Reading",
-        /* Mock 一条数据 */
-        orderStatus: this.getRandom(1, 4),
-      };
-      this.$store.commit("addOrdersItem", orderOBJ);
-      this.$message.success("订单提交成功！");
-      /* 清空表单中的数据 */
-      this.orderItem.GeneralSituation = "";
-      this.orderItem.SpecificQuestion = "";
-      this.fileList = [];
+      this.$refs.orderInfoForm.validate((valid) => {
+        if (valid) {
+          /* 组织一个对象，减少代码冗余 */
+          const orderOBJ = {
+            orderID: this.createOrderNum(),
+            advisorName: this.itemAdvisorMsg.name,
+            GeneralSituation: this.orderItem.GeneralSituation,
+            SpecificQuestion: this.orderItem.SpecificQuestion,
+            orderTime: new Date().toLocaleString(),
+            advisorID: this.advisorItemID,
+            advisorAvatar: this.itemAdvisorMsg.avatarUrl,
+            orderType: "Text Reading",
+            /* Mock 一条数据 */
+            orderStatus: this.getRandom(1, 4),
+          };
+          this.$store.commit("addOrdersItem", orderOBJ);
+          this.$message.success("订单提交成功！");
+          /* 清空表单中的数据 */
+          this.orderItem.GeneralSituation = "";
+          this.orderItem.SpecificQuestion = "";
+          this.fileList = [];
+        } else {
+          console.log("error submit!!");
+          return false;
+        }
+      });
     },
 
     handleChange(info) {
