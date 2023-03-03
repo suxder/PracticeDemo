@@ -143,7 +143,9 @@
               placeholder="Please enter the card number"
               v-model="payCardMsg.cardName"
               style="width: 100%"
-            />
+            >
+              <a-icon slot="suffix" type="credit-card" />
+            </a-input>
           </a-form-model-item>
 
           <!-- Expiration Day -->
@@ -153,7 +155,8 @@
               type="date"
               v-model="payCardMsg.expirationDate"
               style="width: 100%"
-            />
+              ><a-icon slot="suffixIcon" type="caret-down" />
+            </a-month-picker>
           </a-form-model-item>
 
           <!-- Name on Card -->
@@ -252,7 +255,7 @@ export default {
 }
 .placeAdvisorMsgContainer {
   width: 100%;
-  border: 1px solid rgba(26, 144, 255, 0.3);
+  border: 2px solid rgba(26, 144, 255, 0.3);
 }
 ul.ant-rate.ant-rate-disabled {
   font-size: 2rem;
