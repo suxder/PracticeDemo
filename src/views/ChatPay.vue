@@ -154,7 +154,9 @@
               placeholder="Please enter the expiration date"
               type="date"
               v-model="payCardMsg.expirationDate"
+              :disabled-date="disabledDate"
               style="width: 100%"
+              class="ChatPayMonthPick"
               ><a-icon slot="suffixIcon" type="caret-down" />
             </a-month-picker>
           </a-form-model-item>
@@ -194,6 +196,7 @@
 </template>
 
 <script>
+import moment from "moment";
 import { getAdvisorListAPI } from "@/api/advisorList.js";
 
 export default {
@@ -208,7 +211,7 @@ export default {
       chatTime: 3,
       payCardMsg: {
         cardName: "",
-        expirationDate: "2023-03",
+        expirationDate: "2023-04",
         nameOnCard: "",
         CVCName: "",
       },
@@ -275,6 +278,10 @@ export default {
           return false;
         }
       });
+    },
+    disabledDate(current) {
+      // Can not select days before today and today
+      return current && current < moment().endOf("day");
     },
   },
   created() {},
@@ -415,6 +422,85 @@ div.ActiveSelected {
 }
 :global(div.cardForm div.ant-form-item:first-child) {
   margin-top: 1rem;
+}
+/* 修改日期选择器箭头样式 */
+:global(a.ant-calendar-month-panel-next-year-btn) {
+  background-image: url("../assets/imgs/monthAdd.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+:global(
+    a.ant-calendar-month-panel-next-year-btn::before,
+    a.ant-calendar-month-panel-next-year-btn::after
+  ) {
+  border: none !important;
+  border-width: 0 !important;
+}
+
+:global(a.ant-calendar-month-panel-next-year-btn::after) {
+  border: none !important;
+  border-width: 0 !important;
+}
+
+:global(a.ant-calendar-month-panel-prev-year-btn) {
+  background-image: url("../assets/imgs/monthsMinus.svg");
+  background-repeat: no-repeat;
+  background-position: center;
+}
+
+:global(
+    a.ant-calendar-month-panel-prev-year-btn::before,
+    a.ant-calendar-month-panel-prev-year-btn::after
+  ) {
+  border: none !important;
+}
+
+:global(
+    td.ant-calendar-month-panel-selected-cell .ant-calendar-month-panel-month
+  ) {
+  background-color: #efeaf8;
+  color: #7653c5;
+}
+
+:global(td.ant-calendar-month-panel-cell .ant-calendar-month-panel-month) {
+  font-family: "poppins-Medium";
+}
+
+:global(
+    td.ant-calendar-month-panel-selected-cell
+      .ant-calendar-month-panel-month:hover
+  ) {
+  background-color: #efeaf8;
+  color: #7653c5;
+}
+
+:global(
+    td.ant-calendar-month-panel-cell-disabled .ant-calendar-month-panel-month
+  ) {
+  background-color: #fff;
+}
+
+:global(
+    td.ant-calendar-month-panel-cell-disabled
+      .ant-calendar-month-panel-month:hover
+  ) {
+  background-color: #fff;
+}
+
+:global(div.ant-calendar-picker-container) {
+  width: 100%;
+  padding: 0 2rem;
+  top: 770px !important;
+}
+
+:global(div.ant-calendar-picker-container-content) {
+  width: 100%;
+}
+
+:global(span.ant-calendar-month-panel-year-select-content) {
+  font-family: "poppins-Bold";
+  color: #4d1398;
 }
 </style>
 
